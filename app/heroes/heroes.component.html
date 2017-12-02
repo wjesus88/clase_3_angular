@@ -1,0 +1,98 @@
+<p>  heroes  ! </p>
+<p>
+  Seleccionando al heroe
+</p>
+
+<!-- <div *ngIf="selectedHero">
+  <h2>{{ selectedHero.name | uppercase }}</h2>details
+  <div><span>id</span>{{ selectedHero.id}}</div>
+  <div>
+    <label>
+      <input [(ngModel)]="selectedHero.name">     
+    </label>
+  </div>
+</div>
+ -->
+
+<div class="container">
+<div class="row">
+
+  <div class="col-md-8">
+    <h3>Formateando con Bootsrap 4 tabla for</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Edad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hero of heroes; let i = index" [class.selected]= "hero === selectedHero" (click)="onSelect(hero)">
+        <td>{{hero.id}}</td>
+        <td><a>
+          <span class="badge"></span>
+            {{hero.name}}  
+          </a>
+        </td>
+        <td>@twitter</td>
+        <td>
+          <button class="btn btn danger" title="delete hero"
+          (click)="deleteHeroes(i)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- plantilla para forms boostrap  -->
+  <div class="col-md-4">
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Nombre nuevo</label>
+        <input class="form-control" name="name" placeholder="Agregando nombre"[(ngModel)]="nuevo.name">  
+
+      </div>  
+      <button type="submit" class="btn btn-primary" (click)="addHeroes()" >Agregar</button>
+    
+    </form>
+    
+  </div>
+
+
+
+</div>
+</div>
+
+
+
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+
+
+
+
+
+
+<!-- <mat-form-field class="example-full-width">
+  <input matInput [(ngModel)]="hero.name" placeholder="name">
+</mat-form-field> -->
+
+<!-- <h3>Formateando con Material Design</h3> -->
+
+<!-- <div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" >
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let hero"> {{hero.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let hero"> {{hero.name}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+</div> -->
